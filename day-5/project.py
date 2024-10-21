@@ -22,7 +22,7 @@ num_symbol = int(input("How many symbols do you want?"))
 total_loops = num_symbol + num_number + num_letter
 password = ""
 
-for i in range(1,total_loops):
+while len(password) < total_loops:
     random_number = random.randint(1,3)    
     if random_number == 1 and num_letter != 0:
         password += random.choice(letters)
