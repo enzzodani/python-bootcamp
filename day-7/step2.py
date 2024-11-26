@@ -40,8 +40,7 @@ def user_guess():
 
 if __name__ == "__main__":
 
-    b_word = blanket_word(list)
-    chossen_word = blanket_word(list)
+    chossen_word, b_word = blanket_word(word_list)
 
     while is_complete(b_word) != 1:
         guess = user_guess()
