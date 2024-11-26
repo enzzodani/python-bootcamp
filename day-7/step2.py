@@ -15,8 +15,6 @@ def blanket_word(list):
     b_word = " ".join(temp)
     return chossen_word,b_word
 
-print(blanket_word(word_list))
-
 # TODO2- Depois de um chute, colocar a letra que pertence a palavra no lugar dela 
 def is_complete(blanket_word):
     for letter in blanket_word:
@@ -27,10 +25,25 @@ def is_complete(blanket_word):
 
     return 1
 
-def is_in_the_word(chossen_word, b_word):
+def is_in_the_word(b_word,chossen_word, guess): 
+    # Melhorar essa função para começar a substituir a b_word com as letras corretas
+    for letter in chossen_word:
+        if guess == letter:
+            letter = guess
+        else:
+            continue
+    
 
 def user_guess():
     guess = input("Make a letter guess: ").lower()
+    return guess
 
+if __name__ == "__main__":
+
+    b_word = blanket_word(list)
+    chossen_word = blanket_word(list)
+
+    while is_complete(b_word) != 1:
+        guess = user_guess()
 
 
