@@ -25,13 +25,21 @@ def is_complete(blanket_word):
 
     return 1
 
-def is_in_the_word(b_word,chossen_word, guess): 
+def is_in_the_word(b_word, chossen_word, guess): 
     # Melhorar essa função para começar a substituir a b_word com as letras corretas
+
+    temp = [ ]
+
     for letter in chossen_word:
         if guess == letter:
-            letter = guess
+             temp.append(guess)
+        elif letter == "_": #ERRO
+            temp.append("_")
         else:
             continue
+
+    after_guess = " ".join(temp)
+    return after_guess
     
 
 def user_guess():
@@ -44,5 +52,7 @@ if __name__ == "__main__":
 
     while is_complete(b_word) != 1:
         guess = user_guess()
+        b_word = is_in_the_word(b_word,chossen_word,guess)
+        print(b_word)
 
 
