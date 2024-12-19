@@ -8,12 +8,14 @@ def blanket_word(list):
     print(chossen_word)
 
     temp = [ ]
+    number_of_letter = 0
 
     for letter in chossen_word:
         temp.append("_")
+        number_of_letter += 1
 
     b_word = " ".join(temp)
-    return chossen_word,b_word
+    return chossen_word,b_word, number_of_letter
 
 # TODO2- Depois de um chute, colocar a letra que pertence a palavra no lugar dela 
 def is_complete(blanket_word):
@@ -25,22 +27,25 @@ def is_complete(blanket_word):
 
     return 1
 
-def is_in_the_word(b_word, chossen_word, guess): 
+def is_in_the_word(chossen_word, guess): 
     # Melhorar essa função para começar a substituir a b_word com as letras corretas
-
-    temp = [ ]
+    position = 0
 
     for letter in chossen_word:
+        position += 1
         if guess == letter:
-             temp.append(guess)
-        elif letter == "_": #ERRO
-            temp.append("_")
+            return 1, position, letter
         else:
             continue
 
-    after_guess = " ".join(temp)
-    return after_guess
-    
+    return 0
+
+def sub (b_word, letter, position):
+
+    if b_word[position] == "_":
+        b_word[position] == letter
+    else:
+
 
 def user_guess():
     guess = input("Make a letter guess: ").lower()
@@ -48,11 +53,10 @@ def user_guess():
 
 if __name__ == "__main__":
 
-    chossen_word, b_word = blanket_word(word_list)
+    chossen_word, b_word, number_of_letter = blanket_word(word_list)
 
     while is_complete(b_word) != 1:
         guess = user_guess()
-        b_word = is_in_the_word(b_word,chossen_word,guess)
         print(b_word)
 
 
