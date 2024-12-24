@@ -28,24 +28,22 @@ def is_complete(blanket_word):
     return 1
 
 def is_in_the_word(chossen_word, guess): 
-    # Melhorar essa função para começar a substituir a b_word com as letras corretas
-    position = 0
 
-    for letter in chossen_word:
-        position += 1
-        if guess == letter:
-            return 1, position, letter
-        else:
-            continue
-
-    return 0
+    return chossen_word.find(guess)
 
 def sub (b_word, letter, position):
+    print("sub function inside")
+    print("Letter:" + str(letter) + " ,Position:" + str(position))
+    print("blanked: " + b_word + " / blanked position: " + b_word[position])
 
     if b_word[position] == "_":
-        b_word[position] == letter
+        print("inside if sub function")
+        b_word = b_word[:position] + letter + b_word[position+1:]
+        print(b_word)
+        # b_word[position] = letter
+        return b_word
     else:
-
+        return None
 
 def user_guess():
     guess = input("Make a letter guess: ").lower()
@@ -57,6 +55,10 @@ if __name__ == "__main__":
 
     while is_complete(b_word) != 1:
         guess = user_guess()
+        position = is_in_the_word(chossen_word, guess)
+        if position != -1:
+            sub(b_word, guess, position)
+            
         print(b_word)
 
 
