@@ -3,47 +3,27 @@ import random
 
 word_list = ['Giovanna', 'Portal', 'Costa']
 
-def blanket_word(list):
-    chossen_word = random.choice(list).lower()
-    print(chossen_word)
+def blanket_word(chossen_word):
 
-    temp = [ ]
+    temp = ""
     number_of_letter = 0
 
     for letter in chossen_word:
-        temp.append("_")
-        number_of_letter += 1
+        temp += "_ "
 
-    b_word = " ".join(temp)
-    return chossen_word,b_word, number_of_letter
+    return temp
 
-# TODO2- Depois de um chute, colocar a letra que pertence a palavra no lugar dela 
-def is_complete(blanket_word):
-    for letter in blanket_word:
-        if letter == "_":
-            return 0
+def display(chossen_word, guess):
+    display_word = ""
+
+    for letter in chossen_word:
+        if letter == guess:
+            display_word += letter
         else:
-            continue
+            display_word += " _ "
 
-    return 1
+    return display_word
 
-def is_in_the_word(chossen_word, guess): 
-
-    return chossen_word.find(guess)
-
-def sub (b_word, letter, position):
-    print("sub function inside")
-    print("Letter:" + str(letter) + " ,Position:" + str(position))
-    print("blanked: " + b_word + " / blanked position: " + b_word[position])
-
-    if b_word[position] == "_":
-        print("inside if sub function")
-        b_word = b_word[:position] + letter + b_word[position+1:]
-        print(b_word)
-        # b_word[position] = letter
-        return b_word
-    else:
-        return None
 
 def user_guess():
     guess = input("Make a letter guess: ").lower()
@@ -51,14 +31,8 @@ def user_guess():
 
 if __name__ == "__main__":
 
-    chossen_word, b_word, number_of_letter = blanket_word(word_list)
+    chossen_word = random.choice(word_list).lower()
+    
+    b_word = blanket_word(chossen_word)
 
-    while is_complete(b_word) != 1:
-        guess = user_guess()
-        position = is_in_the_word(chossen_word, guess)
-        if position != -1:
-            sub(b_word, guess, position)
-            
-        print(b_word)
-
-
+    print(display(chossen_word, user_guess()))
