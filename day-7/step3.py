@@ -3,15 +3,16 @@ import random
 
 word_list = ['Giovanna', 'Portal', 'Costa']
 
-chossen_word = random.choice(word_list).lower()
+def choice_word():
 
-temp = ""
+    chossen_word = random.choice(word_list).lower()
 
-for letter in chossen_word:
-    temp += " _ "
+    temp = ""
+
+    for letter in chossen_word:
+        temp += " _ "
 
 
-display_word = ""
 is_complete = 0
 
 while is_complete == 0:
@@ -27,4 +28,10 @@ while is_complete == 0:
 
     print(display_word)
 
+def main():
+    display_word = ""
+    choice_word()
 
+
+if __name__ == "__main__":
+    main()
